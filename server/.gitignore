@@ -1,2 +1,4 @@
 .env
 node_modules
+
+DATABASE_URL=postgresql://postgres:[orangeJuiceBox4783]@db.psxtunqckifpwlriyitg.supabase.co:5432/postgres
