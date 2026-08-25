@@ -15,7 +15,7 @@ async function seed() {
         const categories = ['Pants', 'Tops', 'Skirts', 'Sweaters', 'Dresses', 'Coats and Jackets', 'Shoes', 'Bags and Belts'];
         for (const name of categories) {
             await pool.query(
-                'INSERT INTO categories (name) VALUE ($1) ON CONFLICT (name) DO NOTHING',
+                'INSERT INTO categories (name) VALUES ($1) ON CONFLICT (name) DO NOTHING',
                 [name]
             );
         }
