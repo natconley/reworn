@@ -47,4 +47,14 @@ async function deleteProduct(id) {
     return result.rowCount;
 }
 
-module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct };
+// add product
+async function addProduct(productData) {
+    const query = ` INSERT INTO products (name, description, image_url, sku, price, slug, published_date, size, category_id, era_id, color_id, condition_id) 
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) 
+    RETURNING * `;
+    const values = [productData.name, productData.description, productData.image_url, productData.sku, productData.price, productData.slug, productData.published_date, productData.size, productData.category_id, productData.era_id, productData.color_id, productData.condition_id];
+    const result = await pool.query(query, values);
+    return result.rows[0];
+}
+
+module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct };

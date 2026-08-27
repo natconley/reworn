@@ -7,3 +7,26 @@ GET http://localhost:3000/api/products/not-product
 
 ###
 GET http://localhost:3000/api/products/search?search=kofta
+
+###
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Test Kofta",
+  "description": "En testprodukt",
+  "image_url": "/images/products/test.jpg",
+  "sku": "TES001",
+  "price": 299,
+  "slug": "test-kofta",
+  "published_date": "2026-01-01",
+  "size": "M",
+  "category_id": 1,
+  "era_id": 1,
+  "color_id": 1,
+  "condition_id": 1
+}
+
+###
+
+DELETE http://localhost:3000/api/products/1

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllProducts, getProductBySlug, searchProducts, deleteProduct } = require('../repositories/productRepository');
+const { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct } = require('../repositories/productRepository');
 
 // get all products
 router.get('/', async (req, res) => {
@@ -56,6 +56,18 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch product' });
     }
 })
+
+// Add new product
+router.post('/', async (req, res) => {
+    try {
+        const productData = req.body;
+        const newProduct = await addProduct(productData);
+        res.status(201).json(newProduct);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to create product' });
+    }
+});
 
 
 
