@@ -57,4 +57,11 @@ async function addProduct(productData) {
     return result.rows[0];
 }
 
-module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct };
+// similar products
+async function getSimilarProducts(categoryId, excludeId) {
+const query = baseQuery + ' WHERE p.category_id = $1 AND p.id != $2 AND published_date <= NOW()';
+const result = await pool.query(query, [categoryId, excludeId]);
+return result.rows;
+}
+
+module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts };

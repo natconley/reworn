@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct } = require('../repositories/productRepository');
+const { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts } = require('../repositories/productRepository');
 
 // get all products
 router.get('/', async (req, res) => {
@@ -25,21 +25,22 @@ router.get('/search', async (req, res) => {
     }
 });
 
-// get product by slug
+
+// get product by slug, get similar products
 router.get('/:slug', async (req, res) => {
     try {
         const slug = req.params.slug;
         const product = await getProductBySlug(slug);
-         if (!product) {
-            res.status(404).json({ error: 'Product could not be found' });
-        } else {
-        res.json(product);
-       }
+        if (!product) {
+            return res.status(404).json({ error: 'Product could not be found' });
+        }
+        const similarProducts = await getSimilarProducts(product.category_id, product.id);
+        res.json({ ...product, similarProducts });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Failed to fetch product' });
     }
-});
+})
 
 //delete product
 router.delete('/:id', async (req, res) => {

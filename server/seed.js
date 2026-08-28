@@ -52,6 +52,16 @@ async function seed() {
              console.log(`Inserted ${conditions.length} conditions`);
 
              console.log('Lookup tables added');
+
+             console.log('Building lookup maps...');
+             const categoryMap = await buildLookupMap('categories');
+             const eraMap = await buildLookupMap('eras');
+             const colorMap = await buildLookupMap('colors');
+             const conditionMap = await buildLookupMap('conditions');
+
+             console.log('Seeding products...');
+             await seedProducts(categoryMap, eraMap, colorMap, conditionMap);
+
     } catch (err) {
         console.error('Seeding failed:', err);
     } finally {
@@ -60,3 +70,16 @@ async function seed() {
 }
 
 seed();
+
+async function buildLookupMap(tableName) {
+        const result = await pool.query(`SELECT * FROM ${tableName}`);
+        const map = {};
+        for (const row of result.rows) {
+            map[row.name] = row.id;
+        }
+        return map;
+}
+
+async function seedProducts(categoryMap, eraMap, colorMap, conditionMap) {
+
+}
