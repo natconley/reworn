@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  /* Brand colors */
+  --color-cream: #f7f3eb;
+  --color-charcoal: #28282a;
+  --color-tomato: #d7543a;
+  --color-cobalt: #097fbe;
+  --color-sage: #7a8f7a;
+  --color-sand: #e3d6c6;
+
+  /* Backgrounds */
+  --color-background: var(--color-cream);
+  --color-surface: #fffdf8;
+  --color-surface-muted: var(--color-sand);
+  --color-footer: var(--color-charcoal);
+
+  /* Text */
+  --color-text: var(--color-charcoal);
+  --color-text-light: #fffdf8;
+  --color-text-muted: #68645f;
+
+  /* Accent / actions */
+  --color-primary: var(--color-tomato);
+  --color-primary-hover: #bd452f;
+  --color-secondary: var(--color-cobalt);
+  --color-secondary-hover: #08699d;
+
+  /* Borders */
+  --color-border: #d8d0c5;
+  --color-border-dark: var(--color-charcoal);
+
+  /* Status / product labels */
+  --color-badge: var(--color-tomato);
+  --color-badge-text: #ffffff;
+  --color-success: var(--color-sage);
+
+  /* Typography */
+  --font-heading: "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-accent: "Caveat", cursive;
+
+  /* Font sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.5rem;
+  --font-size-hero: clamp(3rem, 8vw, 6rem);
+
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgb(40 40 42 / 8%);
+  --shadow-md: 0 8px 24px rgb(40 40 42 / 12%);
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 72px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
