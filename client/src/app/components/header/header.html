@@ -1,1 +1,27 @@
-<p>header works!</p>
+<header>
+<a routerLink="/" class="logo">REWORN</a>
+
+<nav class="header-links">
+    <a href="#">New Finds</a>
+    <a href="#">All Items</a>
+</nav>
+
+<div class="search-bar">
+<input 
+[(ngModel)]="searchTerm"
+(keyup.enter)="onSearch()"
+placeholder="Search Items..." />
+<button (click)="onSearch()">
+    <span class="material-symbols-outlined">search</span>
+</button>
+</div>
+
+<div class="icons">
+<a class="favorite-icon">
+  <span class="material-symbols-outlined">favorite</span>
+</a>
+<a routerLink="/cart">
+  <span class="material-symbols-outlined">shopping_bag</span>
+</a>
+</div>
+</header>
