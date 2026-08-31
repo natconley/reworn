@@ -80,3 +80,13 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+}
+
+html {
+    width: 100%;
+}
