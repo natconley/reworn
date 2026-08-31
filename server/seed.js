@@ -7,6 +7,46 @@ const pool = new Pool({
     ssl: { rejectUnauthorized: false}
 });
 
+
+// build tables for category, color, era, condition
+async function buildLookupMap(tableName) {
+        const result = await pool.query(`SELECT * FROM ${tableName}`);
+        const map = {};
+        for (const row of result.rows) {
+            map[row.name] = row.id;
+        }
+        return map;
+}
+
+// seed products from products.js
+async function seedProducts(categoryMap, eraMap, colorMap, conditionMap) {
+    const products = require('./data/products');
+
+    for (const product of products) {
+        const query = `
+        INSERT INTO products (name, description, image_url, sku, price, slug, published_date, size, category_id, era_id, color_id, condition_id)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+        ON CONFLICT (slug) DO NOTHING
+        `;
+        const values = [
+            product.name,
+            product.description,
+            product.image_url,
+            product.sku,
+            product.price,
+            product.slug,
+            product.published_date,
+            product.size,
+            categoryMap[product.category],
+            eraMap[product.era],
+            colorMap[product.color],
+            conditionMap[product.condition]
+        ];
+        await pool.query(query, values);
+    }
+}
+
+
 async function seed() {
     try {
         console.log('Seeding lookup tables...');
@@ -70,16 +110,3 @@ async function seed() {
 }
 
 seed();
-
-async function buildLookupMap(tableName) {
-        const result = await pool.query(`SELECT * FROM ${tableName}`);
-        const map = {};
-        for (const row of result.rows) {
-            map[row.name] = row.id;
-        }
-        return map;
-}
-
-async function seedProducts(categoryMap, eraMap, colorMap, conditionMap) {
-
-}
