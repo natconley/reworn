@@ -1,1 +1,12 @@
-<p>product-card works!</p>
+<a [routerLink]="['/product', product().slug]" class="product-card">
+    @if (isNew) {
+        <span class="badge">New</span>
+    }
+    <img [src]="product().img_url" [alt]="product().name" />
+    <button class="favorite-btn" (click)="onFavoriteClick($event)">
+       <span class="material-symbols-outlined">favorite</span> 
+    </button>
+    <h3>{{ product().name }}</h3>
+    <p class="product-info">{{ product().era }} · Size {{ product().size }}</p>
+    <p class="price">{{ product().price }} kr</p>
+</a>
