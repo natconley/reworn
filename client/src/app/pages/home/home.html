@@ -2,6 +2,7 @@
     <img [src]="currentHero.image" [alt]="currentHero.heading" />
     <h1 class="hero-heading">{{ currentHero.heading }}</h1>
     <p class="hero-subheading">{{ currentHero.subHeading }}</p>
+    <button class="hero-button">New Finds</button>
 </section>
   <section class="product-grid">
   @for (product of products(); track product.id) {

@@ -10,7 +10,7 @@ export class ProductService {
   private http = inject(HttpClient);
   private baseUrl = '/api/products';
 
-  getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.baseUrl);
+  getAllProducts(onlyPublished = false): Observable<Product[]> {
+    return this.http.get<Product[]>((`${this.baseUrl}?onlyPublished=${onlyPublished}`));
   }
 }

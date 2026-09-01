@@ -5,7 +5,8 @@ const { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProd
 // get all products
 router.get('/', async (req, res) => {
     try {
-      const products = await getAllProducts();
+        const onlyPublished = req.query.onlyPublished === 'true';
+      const products = await getAllProducts({ onlyPublished });
 res.json(products);  
     } catch (err) {
         console.error(err);

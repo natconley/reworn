@@ -23,7 +23,7 @@ const heroVariants: HeroSlide[] = [
 })
 export class Home {
   private productService = inject(ProductService);
-  products = toSignal(this.productService.getAllProducts(), { initialValue: [] });
+  products = toSignal(this.productService.getAllProducts(true), { initialValue: [] });
 
   currentHeroIndex = signal(0);
 
