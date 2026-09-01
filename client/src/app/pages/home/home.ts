@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ProductService } from '../../services/product';
 import { ProductCard } from '../../components/product-card/product-card';
@@ -23,8 +23,8 @@ const heroVariants: HeroSlide[] = [
 })
 export class Home {
   private productService = inject(ProductService);
-  products = toSignal(this.productService.getAllProducts(true), { initialValue: [] });
-
+  products = toSignal(this.productService.getAllProducts(true), { initialValue: [] });  
+  popularProducts = computed(() => this.products().slice(0, 8));
   currentHeroIndex = signal(0);
 
   constructor() {

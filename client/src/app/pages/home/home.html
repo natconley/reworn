@@ -2,10 +2,18 @@
     <img [src]="currentHero.image" [alt]="currentHero.heading" />
     <h1 class="hero-heading">{{ currentHero.heading }}</h1>
     <p class="hero-subheading">{{ currentHero.subHeading }}</p>
-    <button class="hero-button">New Finds</button>
+    <a routerLink="/new-finds" class="hero-btn">
+      New finds
+    </a>
 </section>
-  <section class="product-grid">
-  @for (product of products(); track product.id) {
+  <section class="popular-products">
+    <div class="heading-container">
+    <h2>Most Wanted</h2>
+    <span>Better be quick!</span>
+    </div>
+    <div class="product-grid">
+  @for (product of popularProducts(); track product.id) {
     <app-product-card [product]="product"></app-product-card>
   }
+  </div>
 </section>
