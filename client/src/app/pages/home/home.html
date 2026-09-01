@@ -1,1 +1,10 @@
-<p>home works!</p>
+  <section class="hero-slide">
+    <img [src]="currentHero.image" [alt]="currentHero.heading" />
+    <h1 class="hero-heading">{{ currentHero.heading }}</h1>
+    <p class="hero-subheading">{{ currentHero.subHeading }}</p>
+</section>
+  <section class="product-grid">
+  @for (product of products(); track product.id) {
+    <app-product-card [product]="product"></app-product-card>
+  }
+</section>

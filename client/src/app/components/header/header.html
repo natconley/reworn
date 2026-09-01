@@ -1,6 +1,13 @@
 <header>
 <a routerLink="/" class="logo">REWORN</a>
-
+<div class="icons">
+<a href='#' class="favorite-icon">
+  <span class="material-symbols-outlined">favorite</span>
+</a>
+<a routerLink="/cart">
+  <span class="material-symbols-outlined">shopping_bag</span>
+</a>
+</div>
 <div class="search-bar">
 <input 
 [(ngModel)]="searchTerm"
@@ -11,12 +18,5 @@ placeholder="Search Items..." />
 </button>
 </div>
 
-<div class="icons">
-<a href='#' class="favorite-icon">
-  <span class="material-symbols-outlined">favorite</span>
-</a>
-<a routerLink="/cart">
-  <span class="material-symbols-outlined">shopping_bag</span>
-</a>
-</div>
+
 </header>
