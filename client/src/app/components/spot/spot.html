@@ -1,1 +1,8 @@
-<p>spot works!</p>
+<section class="spot">
+    <a [href]="spotData().link">
+        <img [src]="spotData().image" [alt]="spotData().heading" />
+        <h3>{{ spotData().heading }}</h3>
+        <p>{{ spotData().text }}</p>
+        <span class="spot-link">{{ spotData().linkText }}</span>
+    </a>
+</section>

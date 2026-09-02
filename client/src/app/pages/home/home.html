@@ -1,10 +1,12 @@
   <section class="hero-slide">
     <img [src]="currentHero.image" [alt]="currentHero.heading" />
-    <h1 class="hero-heading">{{ currentHero.heading }}</h1>
-    <p class="hero-subheading">{{ currentHero.subHeading }}</p>
-    <a routerLink="/new-finds" class="hero-btn">
-      New finds
-    </a>
+    <div class="hero-content">
+        <h1 class="hero-heading">{{ currentHero.heading }}</h1>
+        <p class="hero-subheading">{{ currentHero.subHeading }}</p>
+        <a routerLink="/new-finds" class="hero-btn">
+        New finds →
+        </a>
+    </div>
 </section>
   <section class="popular-products">
     <div class="heading-container">
@@ -17,3 +19,11 @@
   }
   </div>
 </section>
+<div class="spotlight-wrapper">
+    <h2 class="spotlight-heading">Pick a mood</h2>
+    <section class="spotlight">
+        @for (spot of spots; track spot.heading) {
+            <app-spot [spotData]="spot"></app-spot>
+        }
+    </section>
+</div>

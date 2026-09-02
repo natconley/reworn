@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { SpotData } from '../../models/spots';
+
 
 @Component({
   selector: 'app-spot',
@@ -6,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './spot.html',
   styleUrl: './spot.css',
 })
-export class Spot {}
+export class Spot {
+  spotData = input.required<SpotData>(); 
+}
