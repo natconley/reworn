@@ -1,1 +1,65 @@
-<p>product-detail works!</p>
+@if (product(); as p) {
+    <main class="product-detail">
+
+        <div class="product-image-wrapper">
+        @if (isNew) {
+            <span class="badge">New</span>
+        }
+
+        <img
+            class="product-image"
+            [src]="p.image_url"
+            [alt]="p.name"
+        />
+
+        <button class="favorite-btn" aria-label="Add to favorites">
+            <span class="material-symbols-outlined">favorite</span>
+        </button>
+        </div>
+
+        <div class="product-content">
+
+        <div class="product-heading">
+            <h1>{{ p.name }}</h1>
+            <p class="price">{{ p.price }} kr</p>
+        </div>
+
+        <p class="product-info">
+            {{ p.era_name }} · Size {{ p.size }}
+        </p>
+
+        <p class="product-description">
+            {{ p.description }}
+        </p>
+
+        <button>Add to cart</button>
+
+        <details class="product-specs">
+            <summary>Details</summary>
+
+            <table>
+            <tbody>
+                <tr>
+                <th scope="row">Condition</th>
+                <td>{{ p.condition_name }}</td>
+                </tr>
+
+                <tr>
+                <th scope="row">Color</th>
+                <td>{{ p.color_name }}</td>
+                </tr>
+
+                <tr>
+                <th scope="row">Category</th>
+                <td>{{ p.category_name }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </details>
+
+        </div>
+
+    </main>
+    } @else {
+    <p class="loading">Loading product...</p>
+    }

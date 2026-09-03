@@ -17,4 +17,8 @@ export class ProductService {
   searchProducts(searchTerm: string): Observable<Product[]> {
     return this.http.get<Product[]>((`${this.baseUrl}/search?search=${searchTerm}`));
   }
+
+  getProductBySlug(slug: string): Observable<Product> {
+    return this.http.get<Product>((`${this.baseUrl}/${slug}`));
+  }
 }
