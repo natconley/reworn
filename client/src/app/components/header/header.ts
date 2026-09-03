@@ -14,5 +14,6 @@ export class Header {
   searchTerm = '';
   onSearch(): void {
     this.router.navigate(['/search'], {queryParams: { search: this.searchTerm } });
+    this.searchTerm = '';
   }
 }

@@ -1,1 +1,18 @@
-<p>search-results works!</p>
+<section class="search-page"> 
+    <div class="heading-container">
+        <span class="search-label">Results for</span>
+    <h2>"{{ searchTerm() }}"</h2>
+    <span class="result-count">{{ products().length }} items</span>
+    
+</div>
+ @if (products().length === 0) {
+    <p class="no-products">Empty boxes make great rocket ships.</p>
+    <a class="products-link" href="#">Keep Looking →</a>
+ } @else {
+    <div class="product-grid">
+        @for (product of products(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+        }
+    </div>
+    }
+</section>

@@ -13,4 +13,8 @@ export class ProductService {
   getAllProducts(onlyPublished = false): Observable<Product[]> {
     return this.http.get<Product[]>((`${this.baseUrl}?onlyPublished=${onlyPublished}`));
   }
+
+  searchProducts(searchTerm: string): Observable<Product[]> {
+    return this.http.get<Product[]>((`${this.baseUrl}/search?search=${searchTerm}`));
+  }
 }
