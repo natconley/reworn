@@ -4,16 +4,21 @@ import { Product } from '../../models/product';
 import { switchMap } from 'rxjs';
 import { ProductService } from '../../services/product';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { ProductCard } from '../../components/product-card/product-card';
 
 @Component({
   selector: 'app-product-detail',
-  imports: [],
+  imports: [ProductCard],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css',
 })
 export class ProductDetail {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
+
+  //till bläddring
+  currentIndex = 0;
+  itemsPerView = 3;
 
    // to show/hide 'new' badge
   get isNew(): boolean {
@@ -33,4 +38,29 @@ export class ProductDetail {
       switchMap(params => this.productService.getProductBySlug(params.get('slug') ?? ''))
     )
   );
+
+  // similar products carousel
+  get visibleSimilarProducts() {
+    return (
+      this.product()?.similarProducts?.slice(
+        this.currentIndex,
+        this.currentIndex + this.itemsPerView
+      ) ?? []
+    );
+  }
+
+  nextSimilar() {
+    const products = this.product()?.similarProducts ?? [];
+
+    if (this.currentIndex + this.itemsPerView < products.length) {
+      this.currentIndex++;
+    }
+  }
+
+  previousSimilar() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    }
+  }
+
 }

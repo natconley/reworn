@@ -35,8 +35,9 @@ router.get('/:slug', async (req, res) => {
         if (!product) {
             return res.status(404).json({ error: 'Product could not be found' });
         }
-        const similarProducts = await getSimilarProducts(product.category_id, product.id);
+        const similarProducts = await getSimilarProducts(product.category_id, product.era_id, product.id);
         res.json({ ...product, similarProducts });
+       
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Failed to fetch product' });

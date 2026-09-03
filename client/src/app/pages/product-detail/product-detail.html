@@ -60,6 +60,29 @@
         </div>
 
     </main>
+    <section class="similar-products">
+        <h2 class="similar-products-heading">Are these yours?</h2>
+        <button
+        class="carousel-btn carousel-btn-next"
+        (clicl)="nextSimilar()"
+        [disabled]=" currentIndex + itemsPerView >= p.similarProducts.length"
+        aria-label="Next products"
+        >←</button>
+        <div class="product-grid">
+            @for (similar of visibleSimilarProducts; track similar.id) {
+        <app-product-card [product]="similar"></app-product-card>
+        }
+        </div>
+        <button
+        class="carousel-btn carousel-btn-next"
+        (click)="nextSimilar()"
+        [disabled]="currentIndex + itemsPerView >= p.similarProducts.length"
+        aria-label="Next products"
+        >
+        →
+        </button>
+
+    </section>
     } @else {
     <p class="loading">Loading product...</p>
     }

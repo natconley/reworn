@@ -13,4 +13,5 @@ export interface Product {
   size: string;
   description: string;
   sku: string;
+  similarProducts?: Product[];
 }

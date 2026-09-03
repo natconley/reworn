@@ -58,10 +58,17 @@ async function addProduct(productData) {
 }
 
 // similar products
-async function getSimilarProducts(categoryId, excludeId) {
-const query = baseQuery + ' WHERE p.category_id = $1 AND p.id != $2 AND published_date <= NOW()';
-const result = await pool.query(query, [categoryId, excludeId]);
-return result.rows;
+async function getSimilarProducts(categoryId, eraId, excludeId) {
+    const query = baseQuery + ' WHERE p.category_id = $1 AND p.id != $2 AND published_date <= NOW()';
+    const result = await pool.query(query, [categoryId, excludeId]);
+
+    if (result.rows.length <= 5) {
+        const fallbackQuery = baseQuery + ' WHERE (p.category_id = $1 OR p.era_id = $2) AND p.id != $3 AND published_date <= NOW()';
+        const fallbackResult = await pool.query(fallbackQuery, [categoryId, eraId, excludeId]);
+        return fallbackResult.rows;
+    } 
+
+    return result.rows;
 }
 
 module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts };
