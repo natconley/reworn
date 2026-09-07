@@ -28,7 +28,7 @@
     font-family: var(--font-accent);
     transform: rotate(-10deg);
     white-space: nowrap;
-    color: var(--color-text-muted);
+    color: var(--color-secondary);
     position: absolute;
     right: 0;
     bottom: -0.6rem;
@@ -93,6 +93,7 @@
     transition: color var(--transition-fast);
     font-family: var(--font-body);
     align-self: center;
+    cursor: pointer;
 }
 
 .hero-btn:hover {
@@ -128,8 +129,9 @@
     transform: rotate(-6deg);
     font-weight: var(--font-weight-regular);
     font-family: var(--font-accent);
-    font-size: clamp(1.4rem, 3vw, 3rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     margin: 0 0 1rem 1.5rem;
+    padding-bottom: 0.6rem;
     font-weight: var(--font-weight-regular);
 }
 
@@ -138,9 +140,15 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--space-lg);
     }
+
 }
 
 @media (min-width: 768px) {
+
+    .spotlight-heading {
+        padding-bottom: 2rem;
+    }
+
     .hero-content {
         left: 6%;
         bottom: 10%;
@@ -171,5 +179,9 @@
     .product-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: var(--space-xl);
+    }
+
+    .spotlight-heading {
+        padding-bottom: 3rem;
     }
 }

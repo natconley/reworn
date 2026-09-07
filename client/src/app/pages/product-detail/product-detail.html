@@ -32,7 +32,7 @@
             {{ p.description }}
         </p>
 
-        <button>Add to cart</button>
+        <button class="add-to-cart-btn">Add to cart</button>
 
         <details class="product-specs">
             <summary>Details</summary>
@@ -62,26 +62,29 @@
     </main>
     <section class="similar-products">
         <h2 class="similar-products-heading">Are these yours?</h2>
+        <div class="carousel">
         <button
-        class="carousel-btn carousel-btn-next"
-        (clicl)="nextSimilar()"
-        [disabled]=" currentIndex + itemsPerView >= p.similarProducts.length"
-        aria-label="Next products"
-        >←</button>
+        class="carousel-btn carousel-btn-prev"
+        (click)="previousSimilar()"
+        [disabled]="currentIndex === 0"
+        aria-label="Previous products"
+        >←</button>   
+        <div class="carousel-viewport">
         <div class="product-grid">
             @for (similar of visibleSimilarProducts; track similar.id) {
         <app-product-card [product]="similar"></app-product-card>
         }
         </div>
+        </div>
         <button
         class="carousel-btn carousel-btn-next"
         (click)="nextSimilar()"
-        [disabled]="currentIndex + itemsPerView >= p.similarProducts.length"
+        [disabled]="currentIndex + itemsPerView >= (p.similarProducts?.length ?? 0)"
         aria-label="Next products"
         >
         →
         </button>
-
+</div>
     </section>
     } @else {
     <p class="loading">Loading product...</p>

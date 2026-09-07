@@ -15,10 +15,13 @@ import { ProductCard } from '../../components/product-card/product-card';
 export class ProductDetail {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
+ 
 
-  //till bläddring
+
   currentIndex = 0;
-  itemsPerView = 3;
+  // changes items per view based on screen size
+  // does not listen for changes in screen size in this iteration
+    itemsPerView = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3;
 
    // to show/hide 'new' badge
   get isNew(): boolean {
@@ -60,7 +63,7 @@ export class ProductDetail {
   previousSimilar() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
+      }
     }
-  }
 
 }
