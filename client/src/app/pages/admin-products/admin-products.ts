@@ -24,12 +24,16 @@ export class AdminProducts {
     });
   }
 
+  isPublished(publishedDate: string): boolean {
+    return new Date(publishedDate) <= new Date();
+  }
+
   onDelete(id: number): void {
     const confirmed = confirm('Are you sure you want to delete this product?');
     if (!confirmed) {
       return;
     }
-    
+
     this.productService.deleteProduct(id).subscribe(() => {
       this.loadProducts();
     });
