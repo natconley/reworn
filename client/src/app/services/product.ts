@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { NewProduct } from '../models/newProduct';
+import { LookUpItem } from '../models/lookUpItem';
 
 @Injectable({
   providedIn: 'root',
@@ -29,6 +30,10 @@ export class ProductService {
 
   createProduct(productData: NewProduct): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, productData);
+  }
+
+  getLookUpItems(type: string): Observable<{ id: number; name: string }[]> {
+    return this.http.get<{ id: number; name: string }[]>(`${this.baseUrl}/${type}`);
   }
 }
 

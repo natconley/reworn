@@ -20,7 +20,6 @@ if (onlyPublished) {
 
 const result = await pool.query(query);
 return result.rows;
-
 }
 
 // Get Product by Slug
@@ -71,4 +70,10 @@ async function getSimilarProducts(categoryId, eraId, excludeId) {
     return result.rows;
 }
 
-module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts };
+// get cateogry, color, era, condition
+async function getCategoryTables(tableName) {
+        const result = await pool.query(`SELECT * FROM ${tableName}`);
+        return result.rows;
+}
+
+module.exports = { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts, getCategoryTables };

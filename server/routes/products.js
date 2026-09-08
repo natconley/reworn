@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts } = require('../repositories/productRepository');
+const { getAllProducts, getProductBySlug, searchProducts, deleteProduct, addProduct, getSimilarProducts, getCategoryTables } = require('../repositories/productRepository');
 
 // get all products
 router.get('/', async (req, res) => {
@@ -26,24 +26,6 @@ router.get('/search', async (req, res) => {
     }
 });
 
-
-// get product by slug, get similar products
-router.get('/:slug', async (req, res) => {
-    try {
-        const slug = req.params.slug;
-        const product = await getProductBySlug(slug);
-        if (!product) {
-            return res.status(404).json({ error: 'Product could not be found' });
-        }
-        const similarProducts = await getSimilarProducts(product.category_id, product.era_id, product.id);
-        res.json({ ...product, similarProducts });
-       
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to fetch product' });
-    }
-})
-
 //delete product
 router.delete('/:id', async (req, res) => {
     try {
@@ -58,7 +40,51 @@ router.delete('/:id', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'Failed to fetch product' });
     }
-})
+});
+
+// Get categories
+router.get('/categories', async (req, res) => {
+    try {
+        const categories = await getCategoryTables('categories');
+        res.json(categories);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch categories' });
+    }
+});
+
+// Get eras
+router.get('/eras', async (req, res) => {
+    try {
+        const eras = await getCategoryTables('eras');
+        res.json(eras);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch eras' });
+    }
+});
+
+// Get colors
+router.get('/colors', async (req, res) => {
+    try {
+        const colors = await getCategoryTables('colors');
+        res.json(colors);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch colors' });
+    }
+});
+
+// Get conditions
+router.get('/conditions', async (req, res) => {
+    try {
+        const conditions = await getCategoryTables('conditions');
+        res.json(conditions);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch conditions' });
+    }
+});
 
 // Add new product
 router.post('/', async (req, res) => {
@@ -71,6 +97,26 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: 'Failed to create product' });
     }
 });
+
+// get product by slug, get similar products
+router.get('/:slug', async (req, res) => {
+    try {
+        const slug = req.params.slug;
+        const product = await getProductBySlug(slug);
+        if (!product) {
+            return res.status(404).json({ error: 'Product could not be found' });
+        }
+        const similarProducts = await getSimilarProducts(product.category_id, product.era_id, product.id);
+        res.json({ ...product, similarProducts });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch product' });
+    }
+});
+
+
+
 
 
 

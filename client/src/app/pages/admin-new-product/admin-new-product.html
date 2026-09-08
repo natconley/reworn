@@ -1,1 +1,54 @@
-<p>admin-new-product works!</p>
+<main class="new-product-page">
+    <h1>New Product</h1>
+    <div class="form-wrapper">
+        <form>
+            <label for="name">Name:</label>
+            <input [(ngModel)]="formData.name" type="text" id="name" name="name" maxlength="25" required> <br>
+            <label for="description">Description:</label>
+            <input [(ngModel)]="formData.description" type="text" id="description" name="description" required> <br>
+            <label for="price">Price:</label>
+            <input [(ngModel)]="formData.price" type="number" id="price" name="price">
+            <label for="size">Size:</label>
+            <input [(ngModel)]="formData.size" type="text" id="size" name="size"> <br>
+            <label for="sku">SKU:</label>
+            <input [(ngModel)]="formData.sku" placeholder="DRE001" type="text" id="sku" name="sku">
+            <label for="slug">Slug:</label>
+            <input [(ngModel)]="formData.slug" placeholder="red-leather-boots" id="slug" name="slug"> <br>
+            <label for="publication-date">Publication date:</label>
+            <input [(ngModel)]="formData.published_date" type="datetime" id="published-date" name="published-date">
+            <label for="image-url">Image:</label>
+            <input [(ngModel)]="formData.image_url" type="text" id="image-url" name="image-url"> <br>
+            <label for="category">Category:</label>
+            <select [(ngModel)]="formData.category_id" name="categories" id="category">
+                <option [ngValue]="0" disabled selected>Choose a category</option>
+                @for (category of categories(); track category.id) {
+                <option [ngValue]="category.id">{{ category.name }}</option>
+                }
+            </select>
+            <label for="era">Era:</label>
+            <select [(ngModel)]="formData.era_id" name="era" id="era">
+                <option [value]="undefined" disabled selected>Choose an era</option>
+                @for (era of eras(); track era.id) {
+                <option [value]="era.id">{{ era.name }}</option>
+                }
+            </select>
+            <label for="color">Color:</label>
+            <select [(ngModel)]="formData.color_id" name="color" id="color">
+                <option [value]="undefined" disabled selected>Choose a color</option>
+                @for (color of colors(); track color.id) {
+                <option [value]="color.id">{{ color.name }}</option>
+                }
+            </select>
+            <label for="condition">Condition:</label>
+            <select [(ngModel)]="formData.condition_id" name="condition" id="condition">
+                <option [value]="undefined" disabled selected>Choose the condition</option>
+                @for (condition of conditions(); track condition.id) {
+                <option [value]="condition.id">{{ condition.name }}</option>
+                }
+            </select>
+
+            
+
+        </form>
+    </div>
+</main>

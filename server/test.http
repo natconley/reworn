@@ -9,6 +9,9 @@ GET http://localhost:3000/api/products/not-product
 GET http://localhost:3000/api/products/search?search=slip
 
 ###
+GET http://localhost:3000/api/products/conditions
+
+###
 POST http://localhost:3000/api/products
 Content-Type: application/json
 
