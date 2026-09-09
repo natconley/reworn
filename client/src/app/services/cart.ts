@@ -12,6 +12,14 @@ interface CartItem {
 export class CartService {
   private items = signal<CartItem[]>([]);
 
+  //for sharing cart items with other pages without security risks (read only)
+  cartItems = computed(() => this.items());
+
+  // updates total prices of product and cart items
+  totalPrice = computed(() =>
+      this.items().reduce((sum, item) => sum + item.product.price * item.quantity, 0)
+  );
+
   addToCart(product: Product): void {
     this.items.update(currentItems => {
       const existingItem = currentItems.find(item => item.product.id === product.id);
@@ -28,9 +36,9 @@ export class CartService {
     });
   }
 
-  removeFromCart(product: Product): void {
+  removeFromCart(productId: number): void {
     this.items.update(currentItems => 
-      currentItems.filter(item => item.product.id !== product.id)
+      currentItems.filter(item => item.product.id !== productId)
       );
     }
 

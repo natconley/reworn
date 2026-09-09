@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CartService } from '../../services/cart';
 
 @Component({
   selector: 'app-cart',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
-export class Cart {}
+export class Cart {
+  cartService = inject(CartService);
+}

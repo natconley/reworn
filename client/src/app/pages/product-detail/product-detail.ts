@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs';
 import { ProductService } from '../../services/product';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ProductCard } from '../../components/product-card/product-card';
+import { CartService } from '../../services/cart';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,6 +16,7 @@ import { ProductCard } from '../../components/product-card/product-card';
 export class ProductDetail {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
+  private cartService = inject(CartService);
  
 
 
@@ -63,6 +65,13 @@ export class ProductDetail {
   previousSimilar() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
+      }
+    }
+
+    onAddToCart(): void {
+      const product = this.product();
+      if (product) {
+        this.cartService.addToCart(product);
       }
     }
 

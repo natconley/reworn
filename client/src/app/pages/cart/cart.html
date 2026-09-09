@@ -1,1 +1,44 @@
-<p>cart works!</p>
+<main class="cart-page-wrapper"> 
+    <div class="heading-wrapper">
+    <h1>Cart</h1>
+    <p>Almost at your doorstep</p>
+    </div>
+    <div class="cart-items">
+        <h2>Finds</h2>
+        
+    <table>
+        <tbody>
+            @for (item of cartService.cartItems(); track item.product.id) {
+                <tr>
+                    <td><img [src]="item.product.image_url" [alt]="item.product.name" /></td>
+                    <td>
+                        <button (click)="cartService.removeFromCart(item.product.id)"></button>
+                    </td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>
+                        <button (click)="cartService.updateQuantity(item.product.id, -1)">-</button>
+                        {{ item.quantity }}
+                        <button (click)="cartService.updateQuantity(item.product.id, +1)">+</button>
+                    </td>
+                    <td>{{ item.product.price * item.quantity }} kr</td>
+                </tr>
+            }
+        </tbody>
+    </table>   
+
+      
+    </div>
+    <div class="cart-summary">
+        <h2>Summary</h2>
+        <input placeholder="Discount Code" type="text">
+        <span>Items</span>
+        <span></span>
+        <span>Shipping</span>
+        <span></span>
+        <span>Total: {{ cartService.totalPrice() }}</span>
+        <button routerLink="/checkout">Checkout</button>
+    </div>
+
+
+</main>
