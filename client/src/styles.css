@@ -12,6 +12,7 @@
   --color-surface: #fffdf8;
   --color-surface-muted: var(--color-sand);
   --color-footer: var(--color-charcoal);
+  --color-surface-dark: #343436;
 
   /* Text */
   --color-text: var(--color-charcoal);
