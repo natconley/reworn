@@ -12,7 +12,7 @@ interface CartItem {
 export class CartService {
   private items = signal<CartItem[]>([]);
 
-  //for sharing cart items with other pages without security risks (read only)
+  //for sharing cart items across pages without security risks (read only)
   cartItems = computed(() => this.items());
 
   // updates total prices of product and cart items

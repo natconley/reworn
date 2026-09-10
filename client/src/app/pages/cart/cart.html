@@ -4,24 +4,25 @@
     <p>Almost at your doorstep</p>
     </div>
     <div class="cart-items">
-        <h2>Finds</h2>
         
     <table>
         <tbody>
             @for (item of cartService.cartItems(); track item.product.id) {
                 <tr>
-                    <td><img [src]="item.product.image_url" [alt]="item.product.name" /></td>
-                    <td>
-                        <button (click)="cartService.removeFromCart(item.product.id)"></button>
+                    <td class="product-image"><img [src]="item.product.image_url" [alt]="item.product.name" /></td>
+                    <td class="remove-product">
+                        <button (click)="cartService.removeFromCart(item.product.id)">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
                     </td>
-                    <td>{{ item.product.name }}</td>
-                    <td>{{ item.product.price }}</td>
-                    <td>
-                        <button (click)="cartService.updateQuantity(item.product.id, -1)">-</button>
+                    <td class="product-name">{{ item.product.name }}</td>
+                    <td class="product-price">{{ item.product.price }}</td>
+                    <td class="product-quantity">
+                        <button (click)="cartService.updateQuantity(item.product.id, -1)" aria-label="decrease quantity">-</button>
                         {{ item.quantity }}
-                        <button (click)="cartService.updateQuantity(item.product.id, +1)">+</button>
+                        <button (click)="cartService.updateQuantity(item.product.id, +1)" aria-label="increase quantity">+</button>
                     </td>
-                    <td>{{ item.product.price * item.quantity }} kr</td>
+                    <td class="product-total-price">{{ item.product.price * item.quantity }} kr</td>
                 </tr>
             }
         </tbody>
@@ -31,13 +32,28 @@
     </div>
     <div class="cart-summary">
         <h2>Summary</h2>
-        <input placeholder="Discount Code" type="text">
-        <span>Items</span>
-        <span></span>
-        <span>Shipping</span>
-        <span></span>
-        <span>Total: {{ cartService.totalPrice() }}</span>
-        <button routerLink="/checkout">Checkout</button>
+
+        <div class="discount">
+            <label for="discount">Discount Code</label>
+            <input id="discount" placeholder="Enter Code" type="text" />  
+        </div>
+
+        <div class="summary-row">
+            <span>Items</span>
+            <span>{{ cartService.totalPrice() }} kr</span>
+        </div>
+
+        <div class="summary-row">
+            <span>Shipping</span>
+            <span>49 kr</span> 
+        </div>
+
+        <div class="summary-total">
+        <span>Total</span>
+        <span>{{ cartService.totalPrice() + 49 }} kr</span>
+        </div>
+        
+        <button class="checkout-btn" routerLink="/checkout">Checkout</button>
     </div>
 
 

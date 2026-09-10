@@ -12,7 +12,7 @@
             [alt]="p.name"
         />
 
-        <button (click)="onAddToCart()" class="favorite-btn" aria-label="Add to favorites">
+        <button class="favorite-btn" aria-label="Add to favorites">
             <span class="material-symbols-outlined">favorite</span>
         </button>
         </div>
@@ -32,7 +32,7 @@
             {{ p.description }}
         </p>
 
-        <button class="add-to-cart-btn">Add to cart</button>
+        <button (click)="onAddToCart()" class="add-to-cart-btn">Add to cart</button>
 
         <details class="product-specs">
             <summary>Details</summary>
