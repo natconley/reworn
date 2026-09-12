@@ -16,7 +16,7 @@
                         </button>
                     </td>
                     <td class="product-name">{{ item.product.name }}</td>
-                    <td class="product-price">{{ item.product.price }}</td>
+                    <td class="product-price">{{ item.product.price }} kr</td>
                     <td class="product-quantity">
                         <button (click)="cartService.updateQuantity(item.product.id, -1)" aria-label="decrease quantity">-</button>
                         {{ item.quantity }}
@@ -43,14 +43,9 @@
             <span>{{ cartService.totalPrice() }} kr</span>
         </div>
 
-        <div class="summary-row">
-            <span>Shipping</span>
-            <span>49 kr</span> 
-        </div>
-
         <div class="summary-total">
         <span>Total</span>
-        <span>{{ cartService.totalPrice() + 49 }} kr</span>
+        <span>{{ cartService.totalPrice() }} kr</span>
         </div>
         
         <button class="checkout-btn" routerLink="/checkout">Checkout</button>

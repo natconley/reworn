@@ -1,1 +1,73 @@
-<p>checkout works!</p>
+<main class="checkout-page-wrapper">
+    <div class="header-wrapper">
+    <a routerLink="/cart" class="back-link">
+    <span class="material-symbols-outlined" aria-hidden="true">
+    arrow_back
+    </span>
+    Back to cart</a>
+    <h1>Checkout</h1>
+    </div>
+    <aside class="order-summary">
+        <div class="products-summary">
+            @for (item of cartService.cartItems(); track item.product.id) {
+                <article class="product-summary">
+                    <img [src]="item.product.image_url" [alt]="item.product.name" />
+                    <div class="product-summary-info">
+                        <h3>{{ item.product.name }}</h3>
+                        <span>Size: {{ item.product.size }}</span>
+                    </div>
+                    <span class="product-summary-price">{{ item.product.price * item.quantity }} kr</span>
+                </article>
+            }
+        </div>
+        <div class="summary-total">
+            <div class="summary-row">
+                <span>Total</span>
+                <span>{{ cartService.totalPrice() }} kr</span>
+            </div>
+        </div>
+    </aside>
+    <section class="checkout-form-section">
+        <form class="checkout-form">
+            <fieldset>
+                <legend>Contact</legend>
+                <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input id="fname" type="text" name="fname" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="surname">Last Name</label>
+                    <input id="surname" type="text" name="surname" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" name="email" required/>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Delivery Address</legend>
+                <div class="form-group">
+                    <label for="address">Street Address</label>
+                    <input id="address" type="text" name="address" required/>
+                </div>
+
+               
+                    <div class="form-group">
+                        <label for="postal-code">Postal Code</label>
+                        <input id="postal-code" type="text" name="postalCode" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input id="city" type="text" name="city" required />
+                    </div>
+         
+            </fieldset>
+                <button class="purchase-btn">Purchase</button>
+    
+        </form>
+    </section>
+</main>
