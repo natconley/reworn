@@ -27,6 +27,13 @@ export class AdminNewProduct {
   condition_id: 0
 };
 
+onCancel(): void {
+  const confirmed = confirm('Are you sure you want to leave? Your changes will not be saved.');
+  if (confirmed) {
+    this.router.navigate(['/admin/products']);
+  }
+}
+
 categories = signal<{ id: number; name: string; }[]>([]);
 eras = signal<{ id: number; name: string; }[]>([]);
 colors = signal<{ id: number; name: string; }[]>([]);

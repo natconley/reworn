@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CartService } from '../../services/cart';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class Header {
   private router = inject(Router);
+  cartService = inject(CartService);
+
+  menuOpen = false;
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
   searchTerm = '';
   onSearch(): void {

@@ -1,19 +1,39 @@
 <main class="new-product-page">
+    <div class="heading-container">
+    <button (click)="onCancel()" class="cancel-btn" aria-label="Cancel">
+        <span class="material-symbols-outlined">arrow_back</span>
+        Back to Products
+    </button>
     <h1>New Product</h1>
+    </div>
+
     <div class="form-wrapper">
-        <form>
-            <label for="name">Name:</label>
-            <input [(ngModel)]="formData.name" type="text" id="name" name="name" maxlength="25" required>
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group form-group-wide">
+                <label for="name">Name:</label>
+                <input [(ngModel)]="formData.name" type="text" id="name" name="name" maxlength="25" required>
+            </div>
+            <div class="form-group form-group-wide">
             <label for="description">Description:</label>
             <textarea [(ngModel)]="formData.description" id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
             <label for="price">Price:</label>
             <input [(ngModel)]="formData.price" type="number" id="price" name="price" required>
+            </div>
+            <div class="form-group">
             <label for="size">Size:</label>
             <input [(ngModel)]="formData.size" type="text" id="size" name="size" required> 
+            </div>
+            <div class="form-group">
             <label for="publication-date">Publication date:</label>
             <input [(ngModel)]="formData.published_date" type="date" id="published-date" name="published-date" required>
+            </div>
+            <div class="form-group form-group-wide">
             <label for="image-url">Image:</label>
             <input [(ngModel)]="formData.image_url" type="text" id="image-url" name="image-url" required> 
+            </div>
+            <div class="form-group">
             <label for="category">Category:</label>
             <select [(ngModel)]="formData.category_id" name="categories" id="category" required>
                 <option [ngValue]="0" disabled selected>Choose a category</option>
@@ -21,6 +41,8 @@
                 <option [ngValue]="category.id">{{ category.name }}</option>
                 }
             </select>
+            </div>
+            <div class="form-group">
             <label for="era">Era:</label>
             <select [(ngModel)]="formData.era_id" name="era" id="era" required>
                 <option [value]="0" disabled selected>Choose an era</option>
@@ -28,6 +50,8 @@
                 <option [value]="era.id">{{ era.name }}</option>
                 }
             </select>
+            </div>
+            <div class="form-group">
             <label for="color">Color:</label>
             <select [(ngModel)]="formData.color_id" name="color" id="color" required>
                 <option [value]="0" disabled selected>Choose a color</option>
@@ -35,6 +59,8 @@
                 <option [value]="color.id">{{ color.name }}</option>
                 }
             </select>
+            </div>
+            <div class="form-group">
             <label for="condition">Condition:</label>
             <select [(ngModel)]="formData.condition_id" name="condition" id="condition" required>
                 <option [value]="0" disabled selected>Choose the condition</option>
@@ -42,7 +68,9 @@
                 <option [value]="condition.id">{{ condition.name }}</option>
                 }
             </select>
+            </div>
+            <button type="submit" class="add-btn">Add Product</button>
         </form>
-        <button class="add-btn" (click)="onSubmit()">Add Product</button>
+
     </div>
 </main>

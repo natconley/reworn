@@ -34,7 +34,7 @@
     font-family: var(--font-body);
     border-radius: 4px;
     background-color: var(--color-primary);
-    color: var(--color-background);
+    color:white;
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.02em;

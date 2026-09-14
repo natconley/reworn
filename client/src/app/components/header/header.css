@@ -1,17 +1,23 @@
-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-    "logo icons"
-    "search search";
-    align-items: center;
-    gap: 0.4rem;
-    padding: 1rem;
+.main-header {
     background-color: rgb(247 243 235 / 90%);
     backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 100;
+}
+
+
+
+.header-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "logo icons"
+        "search search";
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem;
 }
 
 a {
@@ -27,24 +33,75 @@ a {
     grid-area: logo;
 }
 
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    grid-area: icons;
+}
+
+.icons a,
+.menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-charcoal);
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.icons .material-symbols-outlined {
+    font-size: 1.6rem;
+}
+
+.icons a:hover,
+.menu-btn:hover {
+    color: var(--color-primary);
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -0.4rem;
+    right: -0.5rem;
+    min-width: 1.1rem;
+    height: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 0.25rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.65rem;
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
 
 
 .search-bar {
-    grid-column: 1 / -1;
-    grid-area: search;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--color-charcoal); 
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid var(--color-charcoal);
+    grid-area: search;
 }
 
 .search-bar input {
     flex: 1;
     min-width: 0;
-    padding: 0.7rem 0;
+    padding: 0.75rem 0.9rem;
     border: none;
     outline: none;
     background: transparent;
-    color: var(--color-charcoal);
+    color: var(--color-text);
     font-family: var(--font-body);
     font-size: 0.9rem;
 }
@@ -54,55 +111,109 @@ a {
 }
 
 .search-bar button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.65rem 0.9rem;
     border: none;
     background: transparent;
-    color: var(--color-charcoal);
+    color: var(--color-text);
     cursor: pointer;
 }
 
 .search-bar button:hover {
-    color: var(--color-text-light);
-    background-color: var(--color-primary);
-    
+    color: var(--color-primary);
 }
 
-.icons {
+.search-bar:focus-within {
+    border-color: var(--color-tomato);
+}
+
+.main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1rem 1rem;
+
+}
+
+.main-nav.open {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    grid-area: icons;
 }
 
-.icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-charcoal);
+.main-nav a {
+    padding-block: 0.8rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    text-transform: uppercase;
 }
 
-.icons .material-symbols-outlined {
-    font-size: 1.6rem;
+.main-nav a:last-child {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.main-nav a:hover {
+    color: var(--color-primary);
+}
+
+.menu-btn .material-symbols-outlined {
+    transition: transform var(--transition-fast);
 }
 
 
-@media (min-width: 680px) {
-    header {
-        grid-template-columns: auto 1fr auto;
-        grid-template-areas:
+
+@media (min-width: 800px) {
+
+    .header-top {
+    grid-template-columns:
+        auto
+        minmax(300px, 600px)
+        auto;
+
+    grid-template-areas:
         "logo search icons";
-        padding: 1.25rem 2rem;
-        gap: 1.5rem;
+
+    gap: 3rem;
+
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding: 1.25rem 2rem;
     }
 
     .search-bar {
-        grid-column: auto;
+        width: 100%;
+        max-width: 600px;
+        justify-self: center;
     }
 
     .icons {
         justify-self: end;
     }
+
+    .menu-btn {
+        display: none;
     }
+
+    .main-nav,
+    .main-nav.open {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 2rem;
+        padding: 0.85rem 2rem;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .main-nav a {
+        padding: 0;
+        border: 0;
+    }
+
+    .main-nav a:last-child {
+        border-bottom: 0;
+    }
+}

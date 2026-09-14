@@ -1,35 +1,188 @@
+
+
+/*New product page*/
 .new-product-page {
-    min-height: 100vh;
-    padding: 1rem;
-    background-color: var(--color-charcoal);
-    color: var(--color-cream);
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
+/*Heading*/
+.heading-container {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.heading-container h1 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2.75rem, 7vw, 4.5rem);
+  font-weight: var(--font-weight-black);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/*Back / cancel*/
+.cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.cancel-btn .material-symbols-outlined {
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.cancel-btn:hover {
+  color: var(--color-secondary);
+}
+
+.cancel-btn:hover .material-symbols-outlined {
+  transform: translateX(-0.25rem);
+}
+
+/*Form */
 .form-wrapper {
-    width: fit-content;
-    max-width: 1200px;
-    margin-inline: auto;
-    background-color: var(--color-surface-dark);
-    padding: 0.5rem;
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+  padding: 1.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    font-family: var(--font-body);
+.form-wrapper form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
 }
 
-input,
-textarea,
-select {
-  background-color: var(--color-charcoal);
-  color: var(--color-cream);
-  border: 1px solid var(--color-border-dark-bg);
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--color-tomato);
+.form-group label {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  min-width: 0;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.form-group textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+  border-color: var(--color-charcoal);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
   outline: none;
+  border-color: var(--color-tomato);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.add-btn {
+  width: 100%;
+  margin-top: 2rem;
+  padding:0.875rem 1.5rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-tomato);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.add-btn:hover {
+  background-color: var(--color-primary-dark, #333);
+}
+
+.add-btn:active {
+  transform: translateY(1px);
+}
+
+.add-btn:focus-visible {
+  outline: 2px solid var(--color-charcoal);
+  outline-offset: 3px;
+}
+
+@media (min-width: 700px) {
+  .new-product-page {
+    padding: 3.5rem 2rem 6rem;
+  }
+
+  .heading-container {
+    margin-bottom: 2rem;
+  }
+
+  .form-wrapper {
+    padding: 2rem;
+  }
+
+  .form-wrapper form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1.5rem;
+    row-gap: 1.25rem;
+  }
+
+  .form-group-wide,
+  .add-btn {
+    grid-column: 1 / -1;
+  }
+
+  
 }

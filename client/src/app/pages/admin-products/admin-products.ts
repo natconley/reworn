@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { ProductService } from '../../services/product';
 import { Product } from '../../models/product';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-products',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './admin-products.html',
   styleUrl: './admin-products.css',
 })
