@@ -51,10 +51,76 @@ async function addProduct(productData) {
     const query = ` INSERT INTO products (name, description, image_url, sku, price, slug, published_date, size, category_id, era_id, color_id, condition_id) 
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) 
     RETURNING * `;
-    const values = [productData.name, productData.description, productData.image_url, productData.sku, productData.price, productData.slug, productData.published_date, productData.size, productData.category_id, productData.era_id, productData.color_id, productData.condition_id];
+    const slug = await generateUniqueSlug(productData.name);
+    const sku = await generateUniqueSku(productData.category_id);
+    const values = [productData.name, productData.description, productData.image_url, sku, productData.price, slug, productData.published_date, productData.size, productData.category_id, productData.era_id, productData.color_id, productData.condition_id];
     const result = await pool.query(query, values);
     return result.rows[0];
 }
+
+// helper functions for add product
+
+// generates unique sku for addProduct
+// not exported
+async function generateUniqueSku(categoryId) {
+const categoryResult = await pool.query('SELECT name FROM categories WHERE id = $1', [categoryId]);
+
+const categoryName = categoryResult.rows[0].name;
+const prefix = categoryName.slice(0, 3).toUpperCase();
+
+const skuResult = await pool.query('SELECT sku FROM products WHERE sku ILIKE $1 ORDER BY sku DESC LIMIT 1',
+    [`${prefix}%`]
+    );
+
+    let finalSku;
+
+if (skuResult.rows.length === 0) {
+    finalSku = prefix + "001";
+} else {
+    const numberPart = skuResult.rows[0].sku.slice(-3);
+    const asNumber = parseInt(numberPart, 10);
+    const nextNumber = asNumber + 1;
+    const padded = String(nextNumber).padStart(3, '0');
+    finalSku =  prefix + padded;
+}
+return finalSku;
+}
+
+// generates unique slug for addProduct
+// not exported
+async function generateUniqueSlug(name) {
+    const baseSlug = slugify(name);
+
+    const result = await pool.query('SELECT slug FROM products WHERE slug ILIKE $1', [`${baseSlug}%`]);
+    const existingSlugs = result.rows.map(row => row.slug);
+
+    if (!existingSlugs.includes(baseSlug)) {
+        return baseSlug;
+    } 
+    let counter = 2;
+    let newSlug = `${baseSlug}-${counter}`;
+
+    while (existingSlugs.includes(newSlug)) {
+        counter++;
+        newSlug = `${baseSlug}-${counter}`;
+    }
+
+    return newSlug;
+}
+
+//helper function for generateUniqueSlug
+function slugify(name) {
+    return name
+    .toLowerCase()
+    // removes anything that is not a letter, number, space or dash
+    .replace(/[^a-z0-9\s-]/g, '')  
+    // replaces space with dash
+    .replace(/\s+/g, '-');
+}
+
+/*-----end of add product functions-------*/ 
+
+
 
 // similar products
 async function getSimilarProducts(categoryId, eraId, excludeId) {
