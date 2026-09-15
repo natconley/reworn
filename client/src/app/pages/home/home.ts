@@ -32,7 +32,10 @@ const spots: SpotData[] = [
 export class Home {
   private productService = inject(ProductService);
   products = toSignal(this.productService.getAllProducts(true), { initialValue: [] });  
-  popularProducts = computed(() => this.products().slice(0, 8));
+  popularProducts = computed(() => {
+    const shuffled = [...this.products()].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 9);
+  }); 
   currentHeroIndex = signal(0);
   spots = spots;
 
