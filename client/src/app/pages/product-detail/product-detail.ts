@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../models/product';
 import { switchMap } from 'rxjs';
@@ -17,13 +17,19 @@ export class ProductDetail {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
   private cartService = inject(CartService);
- 
 
 
   currentIndex = 0;
   // changes items per view based on screen size
   // does not listen for changes in screen size in this iteration
     itemsPerView = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3;
+
+  constructor() {
+    effect(() => {
+      this.product();
+      this.currentIndex = 0;
+    });
+  }
 
    // to show/hide 'new' badge
   get isNew(): boolean {

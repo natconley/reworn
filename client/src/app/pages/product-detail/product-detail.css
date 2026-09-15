@@ -10,6 +10,10 @@
 /* IMAGE */
 .product-image-wrapper {
     position: relative;
+
+    width: 100%;
+    max-width: 530px;
+    margin-inline: auto;
 }
 
 .product-image {
@@ -172,6 +176,9 @@
     content: "−";
 }
 
+.product-specs summary:hover {
+    color: var(--color-primary);
+}
 .product-specs table {
     width: 100%;
     margin-bottom: var(--space-md);
@@ -280,11 +287,16 @@
 @media (min-width: 800px) {
     .product-detail {
         grid-template-columns:
-        minmax(0, 1.15fr)
-        minmax(320px, 0.85fr);
-        gap: clamp(3rem, 6vw, 6rem);
+        minmax(0, 540px)
+        minmax(320px, 1fr);
+        gap: clamp(2rem, 5vw, 5rem);
         align-items: start;
         padding-block: 3rem 5rem;
+    }
+
+    .product-image-wrapper {
+        max-width: 540px;
+        margin-inline: 0;
     }
 
     .product-content {
@@ -298,6 +310,10 @@
 
     .product-description {
         margin-top: var(--space-xl);
+    }
+
+    .product-heading .price {
+        align-self: last baseline;
     }
 }
 
