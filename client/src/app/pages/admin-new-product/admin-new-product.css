@@ -135,7 +135,7 @@
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
-  background: var(--color-tomato);
+  background: var(--color-primary);
   color: #fff;
   font-family: var(--font-body);
   font-size: var(--font-size-base);

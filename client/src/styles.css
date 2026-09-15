@@ -90,6 +90,19 @@
   box-sizing: border-box;
 }
 
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 800px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
 body {
     margin: 0;
     padding: 0;

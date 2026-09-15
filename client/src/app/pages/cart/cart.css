@@ -39,7 +39,7 @@
 
 .cart-summary h2 {
     margin: 0 0 1.5rem;
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 1.5rem;
     text-transform: uppercase;
 }
@@ -178,14 +178,30 @@
 .checkout-btn {
     width: 100%;
     margin-top: 0.5rem;
-    padding: 1rem;
+    padding:0.875rem 1.5rem;
     border: 0;
     background-color: var(--color-primary);
     color: var(--color-background);
-    font: inherit;
-    font-weight: var(--font-weight-bold);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.02em;
     cursor: pointer;
+    border-radius: 4px;
+}
+
+.checkout-btn:hover {
+    background-color: var(--color-primary-dark, #333);
+}
+
+.checkout-btn:active {
+    transform: translateY(1px);
+}
+
+.checkout-btn:focus-visible {
+    outline: 2px solid var(--color-charcoal);
+    outline-offset: 3px;
 }
 
 

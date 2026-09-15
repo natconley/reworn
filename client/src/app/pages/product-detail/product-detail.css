@@ -113,7 +113,7 @@
     border-radius: 4px;
     background-color: var(--color-primary, #000);
     color: var(--color-background, #fff);
-    font-family: var(--font-heading);
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -129,6 +129,11 @@
 
 .add-to-cart-btn:active {
     transform: translateY(0);
+}
+
+.add-btn:focus-visible {
+    outline: 2px solid var(--color-charcoal);
+    outline-offset: 3px;
 }
 
 /* PRODUCT DETAILS */

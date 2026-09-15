@@ -6,8 +6,6 @@
     z-index: 100;
 }
 
-
-
 .header-top {
     display: grid;
     grid-template-columns: 1fr auto;
