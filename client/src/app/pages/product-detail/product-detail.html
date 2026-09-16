@@ -32,7 +32,12 @@
             {{ p.description }}
         </p>
 
-        <button (click)="onAddToCart()" class="add-to-cart-btn">Add to cart</button>
+        <button 
+            (click)="isInCart ? cartService.removeFromCart(p.id) : onAddToCart()" 
+            [class.in-cart]="isInCart"
+            class="add-to-cart-btn">
+            {{ isInCart ? 'Remove from cart' : 'Add to cart' }}
+        </button>
 
         <details class="product-specs">
             <summary>Details</summary>

@@ -140,6 +140,14 @@
     outline-offset: 3px;
 }
 
+.add-to-cart-btn.in-cart {
+    background-color: var(--color-primary-dark, #333);
+}
+
+.add-to-cart-btn.in-cart:hover {
+    background-color: var(--color-primary);
+}
+
 /* PRODUCT DETAILS */
 .product-specs {
     margin-top: var(--space-xl);

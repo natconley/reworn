@@ -16,7 +16,7 @@ import { CartService } from '../../services/cart';
 export class ProductDetail {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
-  private cartService = inject(CartService);
+  cartService = inject(CartService);
 
 
   currentIndex = 0;
@@ -43,6 +43,12 @@ export class ProductDetail {
     pastWeek.setDate(pastWeek.getDate() - 7);
     return publishedDate >= pastWeek;
   }
+
+  // toggle add to cart button
+  get isInCart(): boolean {
+      const product = this.product();
+      return product ? this.cartService.isInCart(product.id) : false;
+    }
 
   product = toSignal(
     this.route.paramMap.pipe(

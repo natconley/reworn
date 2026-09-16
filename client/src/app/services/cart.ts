@@ -52,6 +52,10 @@ export class CartService {
       return updated.filter(item => item.quantity > 0);
     });  
     } 
+
+    isInCart(productId: number): boolean {
+      return this.items().some(item => item.product.id === productId);
+    }
 }
 
   

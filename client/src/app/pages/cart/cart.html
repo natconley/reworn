@@ -9,7 +9,7 @@
         <tbody>
             @for (item of cartService.cartItems(); track item.product.id) {
                 <tr>
-                    <td class="product-image"><img [src]="item.product.image_url" [alt]="item.product.name" /></td>
+                    <td class="product-image"><a [routerLink]="['/product', item.product.slug]" class="product-link"><img [src]="item.product.image_url" [alt]="item.product.name" /></a></td>
                     <td class="remove-product">
                         <button (click)="cartService.removeFromCart(item.product.id)">
                             <span class="material-symbols-outlined">delete</span>
@@ -28,7 +28,6 @@
         </tbody>
     </table>   
 
-      
     </div>
     <div class="cart-summary">
         <h2>Summary</h2>
@@ -44,8 +43,8 @@
         </div>
 
         <div class="summary-total">
-        <span>Total</span>
-        <span>{{ cartService.totalPrice() }} kr</span>
+            <span>Total</span>
+            <span>{{ cartService.totalPrice() }} kr</span>
         </div>
         
         <button class="checkout-btn" routerLink="/checkout">Checkout</button>
