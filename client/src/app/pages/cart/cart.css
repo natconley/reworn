@@ -152,6 +152,10 @@
     cursor: pointer;
 }
 
+.remove-product button:hover {
+    color: var(--color-primary);
+}
+
 .discount {
     display: grid;
     gap: 0.4rem;
@@ -181,7 +185,7 @@
     padding:0.875rem 1.5rem;
     border: 0;
     background-color: var(--color-primary);
-    color: var(--color-background);
+    color: var(--color-text-light);
     font-family: var(--font-body);
     font-size: var(--font-size-base);
     font-weight: 600;
@@ -230,6 +234,6 @@
     .cart-summary {
         align-self: start;
         position: sticky;
-        top: 6rem;
+        top: 135px;
     }
 }
