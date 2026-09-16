@@ -1,59 +1,119 @@
-# Client
+# REWORN — Vintage Webshop
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.21.
+A full-stack e-commerce application for a fictional vintage/second-hand clothing store, built as a course project. Features a dynamic product catalog, search, a shopping cart, and an admin panel for managing inventory.
 
-## Development server
+**Stack:** Angular (frontend) · Express (backend) · PostgreSQL via Supabase (database)
 
-To start a local development server, run:
+---
+
+## Features
+
+- Dynamic homepage with a rotating hero section, spotlight sections, and a curated grid of published products
+- Search with live results and result count
+- Product detail pages generated from a URL slug, with a "similar products" carousel (category + era fallback matching)
+- "New" badge for products published within the last 7 days; future-dated products are automatically hidden until their publish date
+- Shopping cart with quantity controls and running total, backed by a shared Angular service
+- Checkout page with an order summary and a contact form
+- Admin panel: product table with delete, and a form to add new products (auto-generates unique SKU and slug server-side)
+
+---
+
+## Project structure
+
+```
+webbshop/
+├── client/          Angular frontend
+└── server/          Express backend (Repository Pattern)
+    ├── db.js
+    ├── index.js
+    ├── repositories/
+    ├── routes/
+    ├── data/
+    └── seed.js
+```
+
+The backend follows a **Repository Pattern**: all SQL lives in `repositories/`, all HTTP handling lives in `routes/`. Every database query uses parameterized queries (`$1`, `$2`, ...) — never raw string concatenation.
+
+---
+
+## Setup — running this locally
+
+### Prerequisites
+
+- Node.js (v24 or later recommended — built and tested with v24.9.0)
+- A PostgreSQL database — either installed locally, or a free hosted instance (e.g. [Supabase](https://supabase.com) or [Neon](https://neon.tech))
+
+### 1. Clone and install dependencies
 
 ```bash
+git clone <repo-url>
+cd webbshop
+
+cd client
+npm install
+
+cd ../server
+npm install
+```
+
+### 2. Set up the database
+
+This project uses **PostgreSQL**. Any PostgreSQL instance works — a local install, or a free hosted database such as [Supabase](https://supabase.com) or [Neon](https://neon.tech).
+
+1. Create a PostgreSQL database (locally, or via a hosted provider)
+2. Get its connection string. It should look like:
+   ```
+   postgresql://user:password@host:port/database
+   ```
+   *(If using Supabase specifically: go to the project dashboard → **Connect**, and use the **Session pooler** string rather than the direct connection — the direct connection is IPv6-only and can fail to resolve on some local networks.)*
+3. In `server/`, create a file named `.env`:
+   ```
+   DATABASE_URL=postgresql://your-connection-string-here
+   ```
+4. Run the table definitions in `server/schema.sql` against the database — either by pasting them into your provider's SQL editor, or from the command line:
+   ```bash
+   psql "$DATABASE_URL" -f schema.sql
+   ```
+
+### 3. Seed the database
+
+```bash
+cd server
+node seed.js
+```
+
+This populates the lookup tables (categories, eras, colors, conditions) and a starter set of products.
+
+### 4. Run the app
+
+Two terminals are needed:
+
+```bash
+# Terminal 1 — backend
+cd server
+node index.js
+```
+
+```bash
+# Terminal 2 — frontend
+cd client
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200`. The Angular dev server proxies all `/api` requests to the Express server on port 3000 (see `client/proxy.conf.json`), so no CORS configuration is needed.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Notes
 
-```bash
-ng generate component component-name
-```
+- Server-side rendering (SSR) is disabled for this project (`outputMode: static` in `angular.json`).
+- The Supabase free tier pauses a project after 7 days of inactivity. If this repo is being demoed after a while, the database may need to be manually restored from the Supabase dashboard before the app will connect.
+- SKU and slug are generated automatically on the server when a new product is created — they are not user-editable fields in the admin form.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## Built with
 
-## Building
+Angular · Express · PostgreSQL (Supabase) · vanilla CSS with custom properties
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project was built as part of the Frontend Development program at EC Utbildning.
