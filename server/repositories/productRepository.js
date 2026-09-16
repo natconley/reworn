@@ -32,7 +32,7 @@ return result.rows[0];
 
 // search products
 async function searchProducts(searchTerm) {
-    const query = baseQuery + ' WHERE p.name ILIKE $1 AND published_date <= NOW()';
+    const query = baseQuery + ' WHERE (p.name ILIKE $1 OR p.size ILIKE $1 OR c.name ILIKE $1 OR e.name ILIKE $1 OR col.name ILIKE $1 OR cond.name ILIKE $1) AND published_date <= NOW()';
     const pattern = `%${searchTerm}%`;
 
     const result = await pool.query(query, [pattern]);

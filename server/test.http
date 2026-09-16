@@ -6,7 +6,7 @@ GET http://localhost:3000/api/products
 GET http://localhost:3000/api/products/not-product
 
 ###
-GET http://localhost:3000/api/products/search?search=slip
+GET http://localhost:3000/api/products/search?search=dresses
 
 ###
 GET http://localhost:3000/api/products/conditions
