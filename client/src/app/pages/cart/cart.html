@@ -3,8 +3,19 @@
     <h1>Cart</h1>
     <p>Almost at your doorstep</p>
     </div>
-    <div class="cart-items">
-        
+    @if (cartService.cartItems().length === 0) {
+    <div class="empty-cart">
+        <div class="empty-cart-note">
+        <h2>Well... this is awkward.</h2>
+        <p>Your bag is empty.</p>
+        <a routerLink="/" class="empty-cart-link">
+            Keep shopping
+            <span aria-hidden="true">→</span>
+        </a>
+        </div>
+    </div>
+    } @else {
+    <div class="cart-items">  
     <table>
         <tbody>
             @for (item of cartService.cartItems(); track item.product.id) {
@@ -49,6 +60,6 @@
         
         <button class="checkout-btn" routerLink="/checkout">Checkout</button>
     </div>
-
+}
 
 </main>

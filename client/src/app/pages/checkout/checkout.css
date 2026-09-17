@@ -178,6 +178,55 @@ legend {
     padding: 1.5rem;
 }
 
+.newsletter {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1.2rem;
+}
+
+.newsletter input {
+    min-height: 20px;
+    min-width: 20px;
+    border-color: var(--color-secondary);
+}
+
+.newsletter input[type="checkbox"] {
+    appearance: none;
+    border: 1px solid var(--color-charcoal);
+    background-color: var(--color-background);
+    cursor: pointer;
+    position: relative;
+}
+
+.newsletter input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-bold);
+    line-height: 1;
+}
+
+
+.newsletter input[type="checkbox"]:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.newsletter .newsletter-logo {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    font-weight: var(--font-weight-black);
+    font-size: 1.1rem;
+    line-height: 0.9;
+}
+
 .form-group {
     display: flex;
     flex-direction: column;

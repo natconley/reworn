@@ -1,8 +1,8 @@
 .admin-products-page {
     min-height: 100vh;
     padding: 1rem;
-    background-color: var(--color-charcoal);
-    color: var(--color-cream);
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
 .admin-container {
@@ -57,7 +57,6 @@
     border-collapse: collapse;
 }
 
-
 .admin-table thead {
     display: none;
 }
@@ -73,8 +72,8 @@
 .admin-table tr {
     margin-bottom: 1rem;
     padding: 1rem;
-    background-color: #343436;
-    border: 1px solid rgb(255 255 255 / 10%);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
     max-width: 100%;
     align-self: center;
     border-radius: 4px;
@@ -86,13 +85,14 @@
     font-family: var(--font-body);
     justify-content: space-between;
     padding-block: 0.65rem;
-    border-bottom: 1px solid rgb(255 255 255 / 8%);
+    border-bottom: 1px solid var(--color-border);
 }
+
 
 .admin-table td::before {
     content: attr(data-label);
     flex-shrink: 0;
-    color: rgb(255 255 255 / 55%);
+    color: var(--color-text-muted);
     font-size: 0.75rem;
     font-weight: var(--font-weight-bold);
     letter-spacing: 0.08em;
@@ -103,11 +103,9 @@
     border-bottom: none;
 }
 
-
 /* Image */
 .admin-table .img-cell {
     display: block;
-    padding-bottom: 1rem;
     justify-self: first baseline;
     border-bottom: none;
 }
@@ -125,7 +123,6 @@
 
 /* Delete btn */
 .actions {
-    justify-content: flex-end;
     padding-top: 1rem;
 }
 
@@ -140,10 +137,10 @@
     width: 2.5rem;
     height: 2.5rem;
     padding: 0;
-    border: 1px solid rgb(255 255 255 / 18%);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-pill);
-    background-color: #29292b;
-    color: var(--color-cream);
+    background-color: transparent;
+    color: var(--color-text-muted);
     cursor: pointer;
     transition:
         background-color var(--transition-fast),
@@ -152,9 +149,14 @@
 }
 
 .delete-button:hover {
-    background-color: rgb(215 84 58 / 14%);
+    background-color: rgb(215 84 58 / 10%);
     border-color: var(--color-primary);
-    color: #ef9b89;
+    color: var(--color-primary);
+}
+
+.delete-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 .delete-button .material-symbols-outlined {
@@ -184,16 +186,15 @@
 }
 
 .status-icon.published {
-    background-color: rgb(122 143 122 / 18%);
-    color: #b7c9b7;
-    border: 1px solid rgb(122 143 122 / 35%);
-
+    background-color: rgb(122 143 122 / 12%);
+    border: 1px solid rgba(115, 150, 115, 0.4);
+    color: #5f765f;
 }
 
 .status-icon.scheduled {
-    background-color: rgb(215 84 58 / 16%);
-    color: #ef9b89;
-    border: 1px solid rgb(215 84 58 / 35%);
+    background-color: rgb(215 84 58 / 9%);
+    border: 1px solid rgb(215 84 58 / 30%);
+    color: var(--color-primary);
 }
 
 
@@ -224,9 +225,9 @@
         display: table-row;
         margin: 0;
         padding: 0;
-        background: #28282a9a;
+        background-color: var(--color-background);
         border: none;
-        border-bottom: 1px solid rgb(255 255 255 / 10%);
+        border-bottom: 1px solid var(--color-border);
     }
 
     .admin-table th,
@@ -244,7 +245,9 @@
     }
 
     .admin-table th {
-        color: rgb(255 255 255 / 55%);
+        background-color: var(--color-sand);
+        color: var(--color-text);
+        font-size: var(--font-size-xs);
         font-family: var(--font-body);
         font-size: 0.75rem;
         letter-spacing: 0.08em;

@@ -1,0 +1,97 @@
+.main-header {
+    background-color: rgb(247 243 235 / 90%);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    
+}
+
+.header-top {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    border-bottom: 1px solid var(--color-border);
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-black);
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.03em;
+}
+
+.admin-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+}
+
+.material-symbols-outlined {
+    font-size: 1.2rem;
+}
+
+.admin-heading .admin-title {
+    
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.leave-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-body);
+    font-size: var(--font-size-xs);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.leave-link span {
+    transition: transform var(--transition-fast);
+}
+
+.leave-link:hover {
+    color: var(--color-primary);
+}
+
+.leave-link:hover span {
+    transform: translateX(0.25rem);
+}
+
+.leave-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+
+@media (min-width: 800px) {
+
+    .header-top {
+    padding: 1.25rem 2rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .admin-heading .admin-title {
+        font-size: 1rem;
+    }
+
+    .leave-link {
+        font-size: var(--font-size-sm);
+    }
+
+}
