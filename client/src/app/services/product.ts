@@ -32,8 +32,8 @@ export class ProductService {
     return this.http.post<Product>(this.baseUrl, productData);
   }
 
-  getLookUpItems(type: string): Observable<{ id: number; name: string }[]> {
-    return this.http.get<{ id: number; name: string }[]>(`${this.baseUrl}/${type}`);
+  getLookUpItems(type: string): Observable<LookUpItem[]> {
+    return this.http.get<LookUpItem[]>(`${this.baseUrl}/${type}`);
   }
 }
 

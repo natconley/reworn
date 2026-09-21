@@ -232,10 +232,7 @@ main {
     border-color: var(--color-primary);
 }
 
-.newsletter-form input:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-}
+
 
 .newsletter-form button {
     min-height: 3.5rem;

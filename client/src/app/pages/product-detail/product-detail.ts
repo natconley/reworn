@@ -1,11 +1,11 @@
 import { Component, inject, effect } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../../models/product';
 import { switchMap } from 'rxjs';
 import { ProductService } from '../../services/product';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ProductCard } from '../../components/product-card/product-card';
 import { CartService } from '../../services/cart';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,6 +15,7 @@ import { CartService } from '../../services/cart';
 })
 export class ProductDetail {
   private route = inject(ActivatedRoute);
+  private titleService = inject(Title);
   private productService = inject(ProductService);
   cartService = inject(CartService);
 
@@ -26,8 +27,11 @@ export class ProductDetail {
 
   constructor() {
     effect(() => {
-      this.product();
+      const product = this.product();
       this.currentIndex = 0;
+      if (product) {
+        this.titleService.setTitle(`${product.name} | REWORN`);
+      }
     });
   }
 

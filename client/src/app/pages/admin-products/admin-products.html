@@ -21,11 +21,13 @@
                     @for (product of products(); track product.id) {
                         <tr>
                             <td class="img-cell">
-                                <img 
-                                class="product-thumbnail"
-                                [src]="product.image_url"
-                                [alt]="product.name"
-                                />    
+                                <a [routerLink]="['/product', product.slug]">
+                                    <img 
+                                    class="product-thumbnail"
+                                    [src]="product.image_url"
+                                    [alt]="product.name"
+                                    />  
+                                </a>
                             </td>
                             <td data-label="Name">{{ product.name }}</td>
                             <td data-label="SKU">{{ product.sku }}</td>

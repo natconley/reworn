@@ -3,6 +3,7 @@ import { ProductService } from '../../services/product';
 import { NewProduct } from '../../models/newProduct';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LookUpItem } from '../../models/lookUpItem';
 
 @Component({
   selector: 'app-admin-new-product',
@@ -34,10 +35,10 @@ onCancel(): void {
   }
 }
 
-categories = signal<{ id: number; name: string; }[]>([]);
-eras = signal<{ id: number; name: string; }[]>([]);
-colors = signal<{ id: number; name: string; }[]>([]);
-conditions = signal<{ id: number; name: string; }[]>([]);
+categories = signal<LookUpItem[]>([]);
+eras = signal<LookUpItem[]>([]);
+colors = signal<LookUpItem[]>([]);
+conditions = signal<LookUpItem[]>([]);
 
 constructor() {
   this.productService.getLookUpItems('categories').subscribe(data => {
@@ -57,6 +58,22 @@ constructor() {
   });
 }
   onSubmit(): void {
+    if (
+      !this.formData.name ||
+      !this.formData.description ||
+      !this.formData.image_url ||
+      !this.formData.price ||
+      !this.formData.published_date ||
+      !this.formData.size ||
+      !this.formData.category_id ||
+      !this.formData.era_id ||
+      !this.formData.color_id ||
+      !this.formData.condition_id
+    ) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    
     this.productService.createProduct(this.formData).subscribe(() => {
       this.router.navigate(['/admin/products']);
     });
