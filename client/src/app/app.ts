@@ -25,9 +25,5 @@ export class App {
     { initialValue: this.router.url }
   );
 
-  isAdminRoute = computed(() => {
-    const result = this.currentUrl().startsWith('/admin');
-  console.log('isAdminRoute:', result, 'currentUrl:', this.currentUrl());
-    return result
-});
+  isAdminRoute = computed(() => this.currentUrl().startsWith('/admin'));
 }

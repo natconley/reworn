@@ -81,7 +81,19 @@ This project uses **PostgreSQL**. Any PostgreSQL instance works — a local inst
    psql "$DATABASE_URL" -f schema.sql
    ```
 
-### 3. Seed the database
+### 3. (Optional) Verify the connection
+ 
+Before seeding or starting the server, you can confirm your `.env` is set up correctly:
+ 
+```bash
+cd server
+node test-connection.js
+```
+ 
+This should print the current server time from the database. If it fails, double-check your `DATABASE_URL`.
+
+
+### 4. Seed the database
 
 ```bash
 cd server
@@ -90,7 +102,7 @@ node seed.js
 
 This populates the lookup tables (categories, eras, colors, conditions) and a starter set of products.
 
-### 4. Run the app
+### 5. Run the app
 
 Two terminals are needed:
 
