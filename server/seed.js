@@ -18,7 +18,7 @@ async function buildLookupMap(tableName) {
         return map;
 }
 
-// seed products from products.js
+// seed products from data/products.js
 async function seedProducts(categoryMap, eraMap, colorMap, conditionMap) {
     const products = require('./data/products');
 

@@ -43,12 +43,18 @@ The backend follows a **Repository Pattern**: all SQL lives in `repositories/`, 
 - Node.js (v24 or later recommended — built and tested with v24.9.0)
 - A PostgreSQL database — either installed locally, or a free hosted instance (e.g. [Supabase](https://supabase.com) or [Neon](https://neon.tech))
 
-### 1. Clone and install dependencies
+### 1. Get the project and install dependencies
 
+**If cloning from GitHub:**
 ```bash
 git clone <repo-url>
 cd webbshop
+```
 
+**If you received this as a zip file:** unzip it and open a terminal in the resulting `webbshop` folder.
+
+**Then, either way:**
+```bash
 cd client
 npm install
 
