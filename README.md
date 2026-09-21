@@ -12,9 +12,9 @@ A full-stack e-commerce application for a fictional vintage/second-hand clothing
 - Search with live results and result count
 - Product detail pages generated from a URL slug, with a "similar products" carousel (category + era fallback matching)
 - "New" badge for products published within the last 7 days; future-dated products are automatically hidden until their publish date
-- Shopping cart with quantity controls and running total, backed by a shared Angular service
+- Shopping cart with quantity controls and running total, backed by a shared Angular service. The "Add to cart" button toggles state based on whether the product is already in the cart.
 - Checkout page with an order summary and a contact form
-- Admin panel: product table with delete, and a form to add new products (auto-generates unique SKU and slug server-side)
+- Admin panel: product table with delete, and a form to add new products (auto-generates unique SKU and slug server-side). Uses a separate, minimal header.
 
 ---
 
