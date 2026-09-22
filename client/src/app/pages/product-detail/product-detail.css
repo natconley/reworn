@@ -74,8 +74,7 @@
 .product-heading {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    gap: var(--space-md);
+    gap: var(--space-lg);
 }
 
 .product-heading h1 {
@@ -88,9 +87,10 @@
 
 .price {
     margin: 0;
+    align-self: center;
     font-size: 1.1rem;
     font-weight: var(--font-weight-bold);
-    white-space: nowrap;
+    white-space: nowrap
 }
 
 .product-info {
@@ -216,28 +216,26 @@
 .loading {
     margin: 0;
     padding: 4rem 1rem;
-
     color: var(--color-text-muted);
-
     text-align: center;
 }
 
 /* SIMILAR PRODUCTS */
 
 .similar-products {
-    width: min(calc(100% - 2rem), 1200px);
-    margin: 5rem auto 0;
+    width: 100%;
+    margin: 3rem auto 0;
     padding-bottom: 4rem;
 }
 
 .similar-products-heading {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     font-weight: var(--font-weight-regular);
     font-family: var(--font-accent);
     transform: rotate(2deg);
     margin: 0;
+    padding-left: 2rem;
 }
-
 
 .carousel {
     display: flex;
@@ -263,24 +261,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border: 1px solid var(--color-border, #ccc);
-    border-radius: 50%;
-    background-color: transparent;
-    color: var(--color-text, #000);
-    font-size: 1.25rem;
+    height: 2.5rem;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: var(--color-text);
+    font-size: 1.75rem;
     cursor: pointer;
-    transition: opacity 0.2s, background-color 0.2s;
+    transition: 
+        color var(--transition-fast),
+        transform var(--transition-fast),
+        opacity var(--transition-fast);
 }
 
 .carousel-btn:hover:not(:disabled) {
-    background-color: var(--color-surface);
+    color: var(--color-primary);
+}
+
+.carousel-btn:first-of-type:hover:not(:disabled) {
+    transform: translateX(-0.25rem);
+}
+
+.carousel-btn:last-of-type:hover:not(:disabled) {
+    transform: translateX(0.25rem);
 }
 
 .carousel-btn:disabled {
-    opacity: 0.25;
+    opacity: 0.2;
     cursor: default;
+}
+
+.carousel-btn:focus-visible {
+    outline: 2px solid var(--color-charcoal);
+    outline-offset: 3px;
 }
 
 /*shows full card on mobile*/
@@ -288,7 +302,6 @@
     flex: 1 1 100%;
     min-width: 0;
 }
-
 
 
 /* MEDIA QUERIES */
@@ -309,7 +322,7 @@
 
     .product-content {
         position: sticky;
-        top: 7rem;
+        top: 9rem;
     }
 
     .product-heading h1 {
@@ -322,27 +335,6 @@
 
     .product-heading .price {
         align-self: last baseline;
-    }
-}
-
-@media (min-width: 768px) {
-    .similar-products .product-grid app-product-card {
-            flex: 0 0 calc((100% - 2rem) / 3);
-    }
-
-    .carousel-btn {
-        width: 3rem;
-        height: 3rem;
-        min-height: 0;
-        background-color: transparent;
-        font-size: 1.5rem;
-    }
-
-    .carousel-btn-prev:hover:not(:disabled) {
-        transform: translateX(-2px);
-    }
-
-    .carousel-btn-next:hover:not(:disabled) {
-        transform: translateX(2px);
+        margin-bottom: 4px;
     }
 }
