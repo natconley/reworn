@@ -12,22 +12,22 @@ const baseQuery = `
 
 // Get All Products
 async function getAllProducts({ onlyPublished = false } = {}) {
-let query = baseQuery;
+    let query = baseQuery;
 
-if (onlyPublished) {
-    query += ' WHERE published_date <= NOW()';
+    if (onlyPublished) {
+        query += ' WHERE published_date <= NOW()';
 }
 
 const result = await pool.query(query);
-return result.rows;
+    return result.rows;
 }
 
 // Get Product by Slug
 async function getProductBySlug(slug) {
-   let query = baseQuery + ' WHERE p.slug = $1 AND published_date <= NOW();';
+    let query = baseQuery + ' WHERE p.slug = $1 AND published_date <= NOW();';
 
-const result = await pool.query(query, [slug]);
-return result.rows[0];
+    const result = await pool.query(query, [slug]);
+    return result.rows[0];
 }
 
 // search products
