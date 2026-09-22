@@ -30,7 +30,7 @@
   text-transform: uppercase;
 }
 
-/*Back / cancel*/
+/*Back / cancel btn*/
 .cancel-btn {
   display: inline-flex;
   align-items: center;
@@ -95,7 +95,6 @@
   min-width: 0;
   min-height: 3rem;
   padding: 0.75rem 0.9rem;
-  border: 1px solid var(--color-border);
   border-radius: 2px;
   background-color: var(--color-background);
   color: var(--color-text);
@@ -117,17 +116,11 @@
   border-color: var(--color-charcoal);
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  outline: none;
-  border-color: var(--color-secondary);
-}
-
 .form-group select {
   cursor: pointer;
 }
 
+/* add product btn*/
 .add-btn {
   width: 100%;
   margin-top: 2rem;

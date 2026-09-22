@@ -1,9 +1,14 @@
+.search-page {
+    margin-bottom: 5rem;
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-xl);
     padding-inline: var(--space-md);
     padding-bottom: var(--space-2xl);
+    margin-bottom: 3rem;
 }
 
 .heading-container {
@@ -37,6 +42,7 @@
     margin: 0.5rem 0 0;
 }
 
+/* NO RESULTS PLACEHOLDER*/
 .no-products {
     font-family: var(--font-accent);
     font-size: var(--font-size-lg);

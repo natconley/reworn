@@ -47,7 +47,7 @@ The backend follows a **Repository Pattern**: all SQL lives in `repositories/`, 
 
 **If cloning from GitHub:**
 ```bash
-git clone <repo-url>
+git clone https://github.com/natconley/reworn
 cd webbshop
 ```
 

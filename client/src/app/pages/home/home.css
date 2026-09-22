@@ -4,13 +4,13 @@ main {
     gap: 2.2rem;
     margin-bottom: 3rem;
 }
+
+/* PRODUCT GRID */
 .product-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-xl);
     padding-inline: var(--space-md);
-    /*
-    padding-bottom: var(--space-2xl);*/
 }
 
 .heading-container {
@@ -36,13 +36,13 @@ main {
     font-family: var(--font-accent);
     transform: rotate(-10deg);
     white-space: nowrap;
-    color: var(--color-text-muted);
+    color: var(--color-secondary);
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
-
+/* HERO SECTION */
 .hero-slide {
     position: relative;
     width: 100%;
@@ -229,10 +229,7 @@ main {
 
 .newsletter-form input:focus {
     outline: none;
-    border-color: var(--color-primary);
 }
-
-
 
 .newsletter-form button {
     min-height: 3.5rem;
@@ -330,8 +327,6 @@ main {
     .heading-container {
         height: 80px;
     }
-
-   
 }
 
 @media (min-width: 1068px) {

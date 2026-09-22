@@ -4,7 +4,7 @@
     background-color: var(--color-background);
     color: var(--color-text);
 }
-
+/* HEADING */
 .heading-wrapper {
     margin-bottom: 0.5rem;
 }
@@ -26,6 +26,7 @@
     transform-origin: left center;
 }
 
+/* CART ITEMS SUMMARY */
 .cart-items,
 .cart-summary {
     background-color: var(--color-surface);
@@ -35,7 +36,6 @@
 .cart-items {
     margin-bottom: 1.5rem;
 }
-
 
 .cart-summary h2 {
     margin: 0 0 1.5rem;
@@ -56,7 +56,7 @@
     grid-template-columns: 5.5rem 1fr auto;
     grid-template-areas:
         "image name remove"
-        "image price price"
+        "image size size"
         "image quantity total";
     gap: 0.4rem 1rem;
     padding-block: 1rem;
@@ -92,10 +92,11 @@
 
 .remove-product {
     grid-area: remove;
+    justify-self: end;
 }
 
-.product-price {
-    grid-area: price;
+.product-size {
+    grid-area: size;
     font-size: var(--font-size-sm);
     color: var(--color-text-muted);
 }
@@ -107,6 +108,7 @@
 .product-total-price {
     grid-area: total;
     justify-self: end;
+    align-self: center;
     font-weight: var(--font-weight-medium);
 }
 
@@ -126,7 +128,6 @@
 
 .cart-summary input:focus {
     outline: none;
-    border-color: var(--color-primary);
 }
 
 .product-quantity {
@@ -142,18 +143,6 @@
     background: transparent;
     color: inherit;
     cursor: pointer;
-}
-
-.remove-product button {
-    border: 0;
-    background: transparent;
-    font-size: 1.4rem;
-    color: var(--color-text-muted);
-    cursor: pointer;
-}
-
-.remove-product button:hover {
-    color: var(--color-primary);
 }
 
 .discount {
@@ -179,6 +168,20 @@
     font-weight: var(--font-weight-bold);
 }
 
+/* REMOVE BTN*/
+.remove-product button {
+    border: 0;
+    background: transparent;
+    font-size: 1.4rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.remove-product button:hover {
+    color: var(--color-primary);
+}
+
+/* CHECKOUT BTN */
 .checkout-btn {
     width: 100%;
     margin-top: 0.5rem;
@@ -208,6 +211,7 @@
     outline-offset: 3px;
 }
 
+/* EMPTY CART PLACEHOLDER */
 .empty-cart {
     display: flex;
     align-items: center;
