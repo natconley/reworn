@@ -31,17 +31,6 @@ main {
     text-transform: uppercase;
 }
 
-.popular-products .heading-container span {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-    font-family: var(--font-accent);
-    transform: rotate(4deg);
-    white-space: nowrap;
-    color: var(--color-text-muted);
-    align-self: flex-end;
-    margin-bottom: -0.4rem;
-    
-}
-
 /* HERO SECTION */
 .hero-slide {
     position: relative;
@@ -325,9 +314,6 @@ main {
         padding-bottom: 3rem;
     }
 
-    .heading-container {
-        height: 80px;
-    }
 }
 
 @media (min-width: 1068px) {
