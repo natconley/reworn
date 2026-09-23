@@ -57,7 +57,7 @@
     grid-template-areas:
         "image name remove"
         "image size size"
-        "image quantity total";
+        "image total total";
     gap: 0.4rem 1rem;
     padding-block: 1rem;
     border-bottom: 1px solid var(--color-border);
@@ -101,9 +101,6 @@
     color: var(--color-text-muted);
 }
 
-.product-quantity {
-    grid-area: quantity;
-}
 
 .product-total-price {
     grid-area: total;
@@ -128,21 +125,6 @@
 
 .cart-summary input:focus {
     outline: none;
-}
-
-.product-quantity {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-}
-
-.product-quantity button {
-    width: 1.8rem;
-    height: 1.8rem;
-    border: 1px solid var(--color-border);
-    background: transparent;
-    color: inherit;
-    cursor: pointer;
 }
 
 .discount {

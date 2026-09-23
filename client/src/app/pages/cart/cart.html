@@ -28,11 +28,8 @@
                     </td>
                     <td class="product-name">{{ item.product.name }}</td>
                     <td class="product-size">Size {{ item.product.size }}</td>
-                    <td class="product-quantity">
-                        <button (click)="cartService.updateQuantity(item.product.id, -1)" aria-label="decrease quantity">-</button>
-                        {{ item.quantity }}
-                        <button (click)="cartService.updateQuantity(item.product.id, +1)" aria-label="increase quantity">+</button>
-                    </td>
+                    
+                    
                     <td class="product-total-price">{{ item.product.price * item.quantity }} kr</td>
                 </tr>
             }

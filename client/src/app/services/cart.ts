@@ -20,16 +20,14 @@ export class CartService {
       this.items().reduce((sum, item) => sum + item.product.price * item.quantity, 0)
   );
 
+  // changes have been made to remove quantity control from interface because of shop concept
+  // main possibility of updating quantity still exists
   addToCart(product: Product): void {
     this.items.update(currentItems => {
       const existingItem = currentItems.find(item => item.product.id === product.id);
 
       if (existingItem) {
-        return currentItems.map(item => 
-          item.product.id === product.id
-          ? { ...item, quantity: item.quantity + 1}
-          : item
-        );
+        return currentItems;
       } else {
         return [...currentItems, { product, quantity: 1 }];
       }
