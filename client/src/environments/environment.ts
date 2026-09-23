@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    apiUrl: '/api/products'
+    production: true,
+    apiUrl: 'https://reworn-api.onrender.com/api/products'
 };
