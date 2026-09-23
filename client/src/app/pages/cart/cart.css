@@ -103,15 +103,16 @@
 
 .product-condition {
     grid-area: condition;
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-text-muted);
+    align-self:self-end;
 }
 
 
 .product-total-price {
     grid-area: total;
     justify-self: end;
-    align-self: center;
+    align-self: self-start;
     font-weight: var(--font-weight-medium);
 }
 
