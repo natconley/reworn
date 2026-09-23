@@ -1,66 +1,64 @@
-  <main>
-  <section class="hero-slide">
-    <img [src]="currentHero.image" [alt]="currentHero.heading" />
-    <div class="hero-content">
-        <h1 class="hero-heading">{{ currentHero.heading }}</h1>
-        <p class="hero-subheading">{{ currentHero.subHeading }}</p>
-        <a routerLink="/new-finds" class="hero-btn">
-        New finds →
-        </a>
-    </div>
-</section>
-  <section class="popular-products container">
-    <div class="heading-container">
-    <h2>Most Wanted</h2>
-    <span>Better be quick!</span>
-    </div>
-    <div class="product-grid">
-  @for (product of popularProducts(); track product.id) {
-    <app-product-card [product]="product"></app-product-card>
-  }
-  </div>
-</section>
-<div class="spotlight-wrapper container">
-    <h2 class="spotlight-heading">Pick a mood</h2>
-    <section class="spotlight">
-        @for (spot of spots; track spot.heading) {
-            <app-spot [spotData]="spot"></app-spot>
-        }
-    </section>
-</div>
-<section class="newsletter-section">
-    <div class="newsletter-content container">
-        <div class="newsletter-heading">
-            <h2>Don't miss<br>the good stuff.</h2>
-            <span class="newsletter-note">
-                Consider this peer pressure
-                  <span class="hand-arrow" aria-hidden="true"></span>
-            </span>
+<main>
+    <section class="hero-slide">
+        <img [src]="currentHero.image" [alt]="currentHero.heading" />
+        <div class="hero-content">
+            <h1 class="hero-heading">{{ currentHero.heading }}</h1>
+            <p class="hero-subheading">{{ currentHero.subHeading }}</p>
+            <a routerLink="/new-finds" class="hero-btn">
+            New finds →
+            </a>
         </div>
-
-        <div class="newsletter-signup">
-            <form class="newsletter-form">
-                <label for="newsletter-email" class="sr-only">
-                    Email address
-                </label>
-
-                <input
+    </section>
+    <section class="popular-products container">
+        <div class="heading-container">
+        <h2>Most Wanted</h2>
+        <span>Better be quick!</span>
+        </div>
+        <div class="product-grid">
+        @for (product of popularProducts(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+        }
+        </div>
+    </section>
+        <div class="spotlight-wrapper container">
+            <h2 class="spotlight-heading">Pick a mood</h2>
+            <section class="spotlight">
+            @for (spot of spots; track spot.heading) {
+                <app-spot [spotData]="spot"></app-spot>
+            }
+            </section>
+        </div>
+    <section class="newsletter-section">
+        <div class="newsletter-content container">
+            <div class="newsletter-heading">
+                <h2>Don't miss<br>the good stuff.</h2>
+                <span class="newsletter-note">
+                Consider this peer pressure
+                    <span class="hand-arrow" aria-hidden="true"></span>
+                </span>
+            </div>
+            <div class="newsletter-signup">
+                <form class="newsletter-form">
+                    <label for="newsletter-email" class="sr-only">
+                        Email address
+                    </label>
+                    <input
                     id="newsletter-email"
                     name="email"
                     type="email"
                     placeholder="Your email address"
                     required
-                />
-                <button type="submit">
+                    />
+                    <button type="submit">
                     I'm in
-                    <span aria-hidden="true">→</span>
-                </button>
-            </form>
-            <p>
-                No spam. Just new finds, occasional offers
-                and things worth opening.
-            </p>
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </form>
+                <p>
+                    No spam. Just new finds, occasional offers
+                    and things worth opening.
+                </p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 </main>
