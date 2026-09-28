@@ -6,6 +6,13 @@ main {
 }
 
 /* PRODUCT GRID */
+.loading p, .empty p {
+    font-family: var(--font-body);
+    color:var(--color-text-muted);
+    font-size: var(--font-size-xs);
+    align-self: center;
+    justify-self: center;
+}
 .product-grid {
     display: grid;
     grid-template-columns: 1fr;

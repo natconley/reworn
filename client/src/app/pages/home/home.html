@@ -13,11 +13,21 @@
         <div class="heading-container">
         <h2>Most Wanted</h2>
         </div>
-        <div class="product-grid">
-        @for (product of popularProducts(); track product.id) {
-            <app-product-card [product]="product"></app-product-card>
-        }
-        </div>
+        
+        @if (popularProducts() === null) {
+            <div class="loading-container">
+                <p class="loading">Loading products...</p>
+                <p class="loading-server">The server is waking up, this may take a moment.</p>
+            </div>
+        } @else if (popularProducts()!.length === 0) {
+            <p class="empty">No products available</p>
+        } @else {
+            <div class="product-grid">
+                @for (product of popularProducts(); track product.id) {
+                            <app-product-card [product]="product"></app-product-card>
+                }
+            </div>  
+        }  
     </section>
         <div class="spotlight-wrapper container">
             <h2 class="spotlight-heading">Pick a mood</h2>
