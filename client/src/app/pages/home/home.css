@@ -6,10 +6,18 @@ main {
 }
 
 /* PRODUCT GRID */
-.loading p, .empty p {
+.empty, .loading-server {
     font-family: var(--font-body);
     color:var(--color-text-muted);
     font-size: var(--font-size-xs);
+    align-self: center;
+    justify-self: center;
+}
+
+.loading {
+    font-family: var(--font-body);
+    color:var(--color-text);
+    font-size: var(--font-size-sm);
     align-self: center;
     justify-self: center;
 }
@@ -312,6 +320,14 @@ main {
 }
 
 @media (min-width: 1000px) {
+    .empty, .loading-server {
+        font-size: var(--font-size-sm);
+    }
+
+    .loading {
+        font-size: var(--font-size-md);
+    }
+    
     .product-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: var(--space-xl);
